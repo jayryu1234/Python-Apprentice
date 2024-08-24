@@ -13,24 +13,25 @@ more help
 """
 
 
-import turtle                           # Tell Python we want to work with the turtle
+import turtle    
+import random                       # Tell Python we want to work with the turtle
 turtle.setup (width=600, height=600)    # Set the size of the window
 
 tina = turtle.Turtle()                  # Create a turtle named tina
 
 tina.shape('turtle')                    # Set the shape of the turtle to a turtle
-tina.speed(2)                           # Make the turtle move as fast, but not too fast. 
+tina.speed(1)                           # Make the turtle move as fast, but not too fast. 
 
 
-forwards = [ ... ]
-lefts = [ ... ]
-colors = [  ... ]
+forwards = [ 53, 44, 167, 56, 6, 3, 4, 5]
+lefts = [ 9, 4, 7, 4, 7, 3, 6, 9]
+colors = [ 'red', 'green', 'blue']
 
 for  i in range(8):
 
-    forward = ...
-    left = ...
-    color = ...
+    forward = forwards[random.randint(0, 8)]
+    left = lefts[random.randint(0, 8)]
+    color = colors[random.randint(0, 8)]
 
 
     tina.color(color)
