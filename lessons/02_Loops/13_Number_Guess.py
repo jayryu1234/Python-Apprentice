@@ -33,7 +33,6 @@ at the bottom of the editor screen; this program does not use the GUI.
 import random
 
 def ask_integer(prompt):
-    """Function to ask the user for an integer"""
     while True:
         try:
             return int(input(prompt))
@@ -43,14 +42,39 @@ def ask_integer(prompt):
 
 # Pick the random number
 
+while True:
+    num = random.randint(1, 100)
+
+    if not num % 7 == 0:
+        break
+
 # In your loop:
+while True:
 
     # Get the user's guess
+    
+    guess = ask_integer("enter a number ")
 
     # If the user's guess is divisible by 7, tell the user to start over
 
+    if guess % 7 == 0:
+        print("nope that is bad")
+        continue
+
     # If the user's guess is too high, tell the user
+
+    if guess > num:
+        print('too high')
+
     # If the user's guess is too low, tell the user
+
+    if guess < num:
+        print('too low')
+
     # If the user's guess is correct, tell the user and break out of the loop
+
+    if guess == num:
+        print("ur correct")
+        break
 
 

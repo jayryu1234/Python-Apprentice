@@ -41,31 +41,27 @@ color = ""
 for i in range(10):
     for j in range (num1, num2):
         if j % 15 == 0:
-            Text(app, text= '🐍', grid= [i, col])
+            Text(app, text= '🐍', grid= [col, i])
 
         elif j % 5 == 0:
-             Text(app, text='🦡', grid=[i, col])
+             Text(app, text='🦡', grid=[col, i])
 
         elif j % 3 == 0:
-             Text(app, text='🍄', grid=[i, col])
+             Text(app, text='🍄', grid=[col, i])
         else:
             strj = str(j)
 
             try: ans = (int(strj[0]) + int(strj[1])) % 2 == 0
             
             except IndexError:
-                    if j % 2 == 0:
-                         Text(app, text=j, grid=[i, col], color = 'blue')
-                         break
-                    else:
-                        Text(app, text=j, grid=[i, col], color = 'green')
-                        break
+                    ans = (int(strj[0]) %2 ==0)
 
             if ans == True:
-                         Text(app, text=j, grid=[i, col], color = 'blue')
+                         Text(app, text=j, grid=[col, i], color = 'blue')
             else:
-                    Text(app, text=j, grid=[i, col], color = 'green')
+                    Text(app, text=j, grid=[col, i], color = 'green')
         col += 1
+    col = 1
     num1 += 10
     num2 += 10
     print()
