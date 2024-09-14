@@ -20,11 +20,15 @@ an error message will be displayed and new definitions will not be added.
 
 """
 
-
 # Implement the functions below
 
 
 def add_definition(db, key, value):
+    if not len(db) == 5:
+        db.update({key : value})
+    else:
+        error("error")
+
     """
     Add a new definition to the database.
 
@@ -57,7 +61,14 @@ def delete_definition(db, key):
     Returns:
         None
     """
-
+    print("bob")
+    if key in db:
+        del db[key]
+        print(db)
+    else:
+        error("no key found in database", "oop")
+    
+    
     # Delete the item from db if it is present
 
     pass
@@ -75,10 +86,17 @@ def is_funny(definition):
     Returns:
         bool: True if the definition contains any of the funny words, False otherwise.
     """
+
+    bool = None
+
+    if definition == 'fun'or definition == 'funny' or definition == 'hilarious' or definition == 'amusing' or definition == 'pants' or definition == 'spleen':
+        bool = True
+    else:
+        bool = False
     
     # Return True if the definition contains any of the funny words, False otherwise
 
-    return False
+    return bool
 
 def update_listbox(db):
     """
@@ -90,15 +108,14 @@ def update_listbox(db):
 
     # This function will return a list of definitions to be displayed in the listbox, like
     # the one below. (For your function, you should set this list to the empty list)
-    l = [
-        "Item 1: Fake Definition 1",
-        "Item 2: Fake Definition 2",
-        "Item 3: fake Definition 3"
-    ]
+    l = []
 
     # Add each definition to a string
     # iterate over the dict's key-value pairs and turn them into
     # strings, then add the strings to the list with .append()
+
+    for index, (key, value) in enumerate(db.items()):
+        l.append(f"#{index} {key} = {value}")
 
     return l
 
@@ -132,12 +149,9 @@ def _update_listbox(db):
 
 # Function to delete a definition
 def _delete_definition():
-    selected_item = listbox.value
-    if selected_item:
-        word = selected_item.split(":", 1)[0].strip()
-        if word in db:
-            del db[word]
-            _update_listbox(db)
+    key = db[0]
+    delete_definition(db, key)
+    _update_listbox(db)
 
 # Main app
 app = App(title="Funny Definitions", width=600, height=300)
