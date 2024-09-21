@@ -24,10 +24,10 @@ an error message will be displayed and new definitions will not be added.
 
 
 def add_definition(db, key, value):
-    if not len(db) == 5:
+    if not len(db) == 6:
         db.update({key : value})
     else:
-        error("error")
+        error("error", "um, whadda sigma?")
 
     """
     Add a new definition to the database.
@@ -67,7 +67,8 @@ def delete_definition(db, key):
         print(db)
     else:
         error("no key found in database", "oop")
-    
+        print(db)
+        print(key)
     
     # Delete the item from db if it is present
 
@@ -89,7 +90,7 @@ def is_funny(definition):
 
     bool = None
 
-    if definition == 'fun'or definition == 'funny' or definition == 'hilarious' or definition == 'amusing' or definition == 'pants' or definition == 'spleen':
+    if "fun" in definition or "funny" in definition or "hilarious" in definition or 'amusing' in definition or 'pants' in definition or 'spleen' in definition:
         bool = True
     else:
         bool = False
@@ -130,7 +131,12 @@ def _add_definition():
 
     if word and definition:
         if is_funny(definition):
-            definition = "😂 " + definition + " 🤡"
+            if definition == "funny jonni suck deez nutz":
+                definition = "😂 " + " L bozo jonni sucks" + " 🤡"
+            else:
+                definition = "😂 " + definition + " 🤡"
+        elif "jay" in definition:
+                definition = "😂 " + " L bozo todays opposite day :0" + " 🤡"
         add_definition(db, word, definition)
         _update_listbox(db)
         word_entry.clear()
@@ -149,7 +155,15 @@ def _update_listbox(db):
 
 # Function to delete a definition
 def _delete_definition():
-    key = db[0]
+    key = listbox.value
+    equalcount = 0
+    if not key == None:
+        for i in key:
+            if i == "=":
+                equalcount-=1
+                break
+            equalcount +=1
+        key = key[3:equalcount]
     delete_definition(db, key)
     _update_listbox(db)
 

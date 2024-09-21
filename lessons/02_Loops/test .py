@@ -1,18 +1,16 @@
-c = "Hello"
-l = ['a','a','b','b','c','c']
+def pretty_print_2d(a):
+    "" "Prints a 2D array in a pretty way" ""
+    for row in a:
+        print(row)
 
-# Make a tuple from a list
-t = tuple(l)
-print(t)
+board = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9]
+    ]
 
-# Make a set from a list
-s = set(l)
-print(s)
+pretty_print_2d(board)
+print()
 
-# Make a list from a string
-a = list(c)
-print(a)
-
-# Get the unique items from a list, by converting it to a set
-# and then back to a list
-print(list(set(l)))
+transposed = list(zip(*board)) # <--- HERE IS THE MAGIC
+pretty_print_2d(transposed)

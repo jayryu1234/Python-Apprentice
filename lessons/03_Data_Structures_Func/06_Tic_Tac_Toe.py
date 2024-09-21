@@ -15,8 +15,18 @@ def check_row(l):
     Returns:
         The winner's token ( x or o ) if there is one, otherwise None
         """
+    row_num = 0
+    winner = None
+    for i in range(3):
+        if l[row_num] == [X_MARK, X_MARK, X_MARK]:
+            winner = X_MARK
+        elif l[row_num] == [O_MARK, O_MARK, O_MARK]:
+            winner = O_MARK
+        else:
+            winner = None
+        row_num += 1
 
-    return None
+    return winner
 
 def check_win(board):
     """Check if a player has won on a board
@@ -32,6 +42,7 @@ def check_win(board):
 # The following code is the main part of the program. It creates a GUI for the
 # game and handles the game logic. Implement the functions above first, then
 # after your program is working you can try chaning the code below. 
+
 
 class TicTacToe:
     """A Simple Tic Tac Toe game"""
