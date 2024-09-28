@@ -1,7 +1,6 @@
-def pretty_print_2d(a):
-    "" "Prints a 2D array in a pretty way" ""
-    for row in a:
-        print(row)
+# Text Yourself
+# In the comprehensions below, replace the ...
+# with code that will produce the expected output.
 
 board = [
         [1, 2, 3],
@@ -9,8 +8,12 @@ board = [
         [7, 8, 9]
     ]
 
-pretty_print_2d(board)
-print()
-
-transposed = list(zip(*board)) # <--- HERE IS THE MAGIC
-pretty_print_2d(transposed)
+# Uncomment below and replace the ... with code that will produce the expected output.
+dx1 = 0
+dx2 = 0
+d1 = []
+for i in range(3):
+    d1.append(board[dx1][dx2])
+    dx1 += 1
+    dx2 += 1
+print(d1)

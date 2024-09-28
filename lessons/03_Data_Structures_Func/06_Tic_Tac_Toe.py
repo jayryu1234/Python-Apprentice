@@ -15,16 +15,35 @@ def check_row(l):
     Returns:
         The winner's token ( x or o ) if there is one, otherwise None
         """
+    new_list  = [list(e) for e in zip(*l)]
     row_num = 0
     winner = None
     for i in range(3):
-        if l[row_num] == [X_MARK, X_MARK, X_MARK]:
+        if new_list[row_num] == [X_MARK, X_MARK, X_MARK]:
             winner = X_MARK
-        elif l[row_num] == [O_MARK, O_MARK, O_MARK]:
+            break
+        elif new_list[row_num] == [O_MARK, O_MARK, O_MARK]:
             winner = O_MARK
+            break
         else:
             winner = None
         row_num += 1
+    return winner
+
+def check_column(l):
+    print(l)
+    col_num = 0
+    for i in range(3):
+        if l[col_num] == [X_MARK, X_MARK, X_MARK]:
+            winner = X_MARK
+            break
+        elif l[col_num] == [O_MARK, O_MARK, O_MARK]:
+            winner = O_MARK
+            break
+        else:
+            winner = None
+        col_num += 1
+    print(winner)
 
     return winner
 
@@ -36,8 +55,40 @@ def check_win(board):
     Returns:
         The winner's token ( x or o ) if there is one, otherwise None
     """
+    row_ans = check_row(board)
 
-    return None
+    col_ans = check_column(board)
+
+    if not col_ans == None:
+        return col_ans
+    elif not row_ans == None:
+        return row_ans
+    else:
+        dx1 = 0
+        dx2 = 0
+        d1 = []
+        for i in range(3):
+            d1.append(board[dx1][dx2])
+            dx1 += 1
+            dx2 += 1
+        dx1 = 0
+        dx2 = 2
+        d2 = []
+        for i in range(3):
+            d2.append(board[dx1][dx2])
+            dx1 +=1
+            dx2 -= 1
+        if d1 == [X_MARK, X_MARK, X_MARK]:
+            return X_MARK
+        elif d1 == [O_MARK, O_MARK, O_MARK]:
+            return O_MARK
+        elif d2 == [X_MARK, X_MARK, X_MARK]:
+            return X_MARK
+        elif d2 == [O_MARK, O_MARK, O_MARK]:
+            return O_MARK
+        else:
+            return None
+    
 
 # The following code is the main part of the program. It creates a GUI for the
 # game and handles the game logic. Implement the functions above first, then
